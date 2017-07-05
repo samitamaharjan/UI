@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import business.LibraryMember;
-import business.LoginMember;
 import managers.FileManager;
 import managers.FileManagerImpl;
 
@@ -33,5 +32,4 @@ public class TestApp {
 			System.out.println(l.getFirstName() + " " + l.getLastName());
 		}
 	}
-
 }

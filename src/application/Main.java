@@ -12,14 +12,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("Library Management");
 		try {
-			// Parent root = FXMLLoader.load(getClass().getResource("/application/AddMember.fxml"));
-			// Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
-			//Parent root = FXMLLoader.load(getClass().getResource("/application/CheckoutBook.fxml"));
-			//Parent root = FXMLLoader.load(getClass().getResource("/application/Admin_Librarian.fxml"));
-			//Parent root = FXMLLoader.load(getClass().getResource("/application/SuccessfullMsg.fxml"));
-			Parent root = FXMLLoader.load(getClass().getResource("/application/SearchEditMember.fxml"));
+			Parent root0 = FXMLLoader.load(getClass().getResource("/application/AddMember.fxml"));
+			Parent root1 = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
+			Parent root2 = FXMLLoader.load(getClass().getResource("/application/CheckoutBook.fxml"));
+			Parent root3 = FXMLLoader.load(getClass().getResource("/application/Admin_Librarian.fxml"));
+			Parent root4 = FXMLLoader.load(getClass().getResource("/application/SuccessfullMsg.fxml"));
+			Parent root5 = FXMLLoader.load(getClass().getResource("/application/SearchEditMember.fxml"));
 			
-			Scene scene = new Scene(root,600,400);
+			Scene scene = new Scene(root5,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
