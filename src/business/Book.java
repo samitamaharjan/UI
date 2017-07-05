@@ -2,7 +2,7 @@ package business;
 
 import java.io.Serializable;
 
-import com.project.interfaces.PrimaryKey;
+import interfaces.PrimaryKey;
 
 public class Book implements Serializable, PrimaryKey {
 	

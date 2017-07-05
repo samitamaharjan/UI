@@ -1,15 +1,13 @@
-package controller;
+package application;
 
-import com.project.manager.FileManager;
-import com.project.manager.FileManagerImpl;
-import com.project.model.Address;
-import com.project.model.Author;
-import com.project.model.Book;
-import com.project.model.BookType;
-
+import business.Address;
+import business.Author;
+import business.Book;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import managers.FileManager;
+import managers.FileManagerImpl;
 import javafx.scene.control.Alert.AlertType;
 
 public class AddBookController extends AbstractController{

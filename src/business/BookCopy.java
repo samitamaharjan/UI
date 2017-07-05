@@ -1,8 +1,7 @@
 package business;
 
 import java.io.Serializable;
-
-import com.project.interfaces.PrimaryKey;
+import interfaces.PrimaryKey;
 
 public class BookCopy implements Serializable, PrimaryKey {
 

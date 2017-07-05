@@ -3,7 +3,7 @@ package business;
 import java.io.Serializable;
 import java.util.UUID;
 
-import com.project.interfaces.PrimaryKey;
+import interfaces.PrimaryKey;
 
 public class Address implements Serializable, PrimaryKey {
 

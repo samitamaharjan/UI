@@ -84,4 +84,17 @@ public class FileManagerImpl<T extends PrimaryKey> implements FileManager<T> {
 			ex.printStackTrace();
 		}
 	}
+
+	@Override
+	public void edit(T t) {
+		List<T> list = findAll();
+		list.remove(t);
+				
+		try (ObjectOutputStream oos =
+				new ObjectOutputStream(new FileOutputStream(filename))) {
+			oos.writeObject(list);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 }
