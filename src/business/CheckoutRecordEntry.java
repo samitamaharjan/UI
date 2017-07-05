@@ -3,6 +3,7 @@ package business;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
+
 import interfaces.PrimaryKey;
 
 public class CheckoutRecordEntry implements Serializable, PrimaryKey {

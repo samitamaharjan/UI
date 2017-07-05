@@ -1,36 +1,42 @@
 package business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import interfaces.PrimaryKey;
 
 public class BookCopy implements Serializable, PrimaryKey {
 
 	private static final long serialVersionUID = 5654380069068491357L;
 	
-	private String ISBN;
-	private int noOfCopy;
-	private Book book;
+	private String copybookid;
+	private String noOfCopy;
 	
-	public BookCopy(String isbn, int noOfCopy, Book book){
-		this.ISBN = isbn;
+	
+	
+	public BookCopy(String copybookid, String noOfCopy){
+		
+		this.copybookid = copybookid;
 		this.noOfCopy = noOfCopy;
-		this.book = book;
+		
+		
 	}
 
-	public String getISBN() {
-		return ISBN;
+	public String getCopyBookId() {
+		return copybookid;
 	}
 
-	public int getNoOfCopy() {
+	public String getNoOfCopy() {
 		return noOfCopy;
 	}
 
-	public Book getBook() {
-		return book;
-	}
+	
 
 	@Override
 	public String getPrimaryKey() {
-		return ISBN;
+		return copybookid;
 	}
+	
+	
 }

@@ -2,13 +2,13 @@ package application;
 
 import business.Address;
 import business.LibraryMember;
+import dao.FileManager;
+import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import managers.FileManager;
-import managers.FileManagerImpl;
 
 public class AddMemberController extends AbstractController{
 	
@@ -39,6 +39,8 @@ public class AddMemberController extends AbstractController{
 	@FXML
 	private Button btnAddMember;
 	
+	
+	
 	public void addMemberClicked(ActionEvent event){
 		
 		if (memId.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || street.getText().isEmpty() || city.getText().isEmpty()|| state.getText().isEmpty() || zip.getText().isEmpty() || phone.getText().isEmpty()) 
@@ -56,13 +58,14 @@ public class AddMemberController extends AbstractController{
 			String zipCode = zip.getText().toString();
 
 			try {
-				FileManager<LibraryMember> memManager = new FileManagerImpl<>("libraryMember");
+				Address add = new Address(streetname, cityin, stateOfCountry, zipCode);
+				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, add);
+				FileManager<LibraryMember> filemanager = new FileManagerImpl<LibraryMember>("member");
+				filemanager.insert(mem);
+				// call add member method from dao
 				
-				Address addr = new Address(streetname, cityin, stateOfCountry, zipCode);
-				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, addr);
+				filemanager.findAll();
 				
-				memManager.insert(mem);
-				memManager.findAll();
 				
 				clearField(memId,fname,lname,phone,street,city,state,zip);
 				
@@ -72,6 +75,8 @@ public class AddMemberController extends AbstractController{
 			{
 				showAlert(AlertType.ERROR,"Member not added");
 			}
+			
 		}
 	}
+
 }

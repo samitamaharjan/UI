@@ -6,31 +6,74 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddBookController">
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddBookController">
    <children>
-      <Label alignment="CENTER" layoutY="14.0" prefHeight="35.0" prefWidth="600.0" text="Add Book">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="14.0" prefHeight="35.0" prefWidth="700.0" text="Add Book">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="124.0" layoutY="70.0" text="Title">
+      <Label layoutX="165.0" layoutY="62.0" text="Title *">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="123.0" layoutY="116.0" text="ISBN">
+      <Label layoutX="164.0" layoutY="96.0" text="ISBN *">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="167.0" text="Book Type">
+      <Label layoutX="153.0" layoutY="128.0" prefHeight="20.0" prefWidth="81.0" text="Book Type *">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="title" layoutX="249.0" layoutY="68.0" />
-      <TextField fx:id="isbn" layoutX="249.0" layoutY="114.0" />
-      <TextField fx:id="booktype" layoutX="249.0" layoutY="167.0" />
-      <Button fx:id="btnAdd" layoutX="249.0" layoutY="232.0" mnemonicParsing="false" onAction="#addBookClicked" prefHeight="25.0" prefWidth="149.0" text="Add Book" />
+      <TextField fx:id="title" layoutX="338.0" layoutY="60.0" prefHeight="25.0" prefWidth="197.0" />
+      <TextField fx:id="isbn" layoutX="338.0" layoutY="94.0" prefHeight="25.0" prefWidth="197.0" />
+      <Button fx:id="btnAddBook" layoutX="335.0" layoutY="526.0" mnemonicParsing="false" onAction="#addBookClicked" prefHeight="25.0" prefWidth="164.0" text="Add Book" />
+      <ChoiceBox fx:id="booktypeBox" layoutX="338.0" layoutY="126.0" prefHeight="25.0" prefWidth="197.0">
+	     
+	</ChoiceBox>
+      <Label layoutX="153.0" layoutY="247.0" prefHeight="20.0" prefWidth="97.0" text="Author Name *">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="149.0" layoutY="290.0" prefHeight="20.0" prefWidth="133.0" text="Author Address *">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="403.0" text="Author Credentials">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="authorFName" layoutX="335.0" layoutY="247.0" prefHeight="25.0" prefWidth="158.0" promptText="First Name" />
+      <TextField fx:id="authorStreet" layoutX="338.0" layoutY="288.0" prefHeight="25.0" prefWidth="158.0" promptText="Street" />
+      <TextField fx:id="authorPhone" layoutX="338.0" layoutY="362.0" prefHeight="25.0" prefWidth="158.0" promptText="Phone No." />
+      <TextField fx:id="authorLName" layoutX="517.0" layoutY="247.0" prefHeight="25.0" prefWidth="158.0" promptText="Last Name" />
+      <TextField fx:id="authorCity" layoutX="517.0" layoutY="288.0" prefHeight="25.0" prefWidth="158.0" promptText="City" />
+      <TextField fx:id="authorState" layoutX="338.0" layoutY="327.0" prefHeight="25.0" prefWidth="158.0" promptText="State" />
+      <TextField fx:id="authorZip" layoutX="517.0" layoutY="327.0" prefHeight="25.0" prefWidth="158.0" promptText="Zip" />
+      <TextArea fx:id="authorBiopic" layoutX="335.0" layoutY="439.0" prefHeight="75.0" prefWidth="164.0" />
+      <Label layoutX="153.0" layoutY="446.0" prefHeight="17.0" prefWidth="123.0" text="Author Biopic">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="authorCredentials" layoutX="335.0" layoutY="400.0" prefHeight="25.0" prefWidth="164.0" />
+      <Label layoutX="150.0" layoutY="170.0" text="Book Copy Id">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="209.0" text="Number of copies">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="bookcopyid" layoutX="337.0" layoutY="166.0" prefHeight="25.0" prefWidth="197.0" />
+      <TextField fx:id="numberofcopies" layoutX="338.0" layoutY="205.0" prefHeight="25.0" prefWidth="197.0" />
    </children>
 </AnchorPane>

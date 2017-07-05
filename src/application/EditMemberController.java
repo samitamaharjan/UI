@@ -4,11 +4,9 @@ import business.Address;
 import business.LibraryMember;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import managers.FileManager;
-import managers.FileManagerImpl;
+import javafx.scene.control.Alert.AlertType;
 
 public class EditMemberController extends AbstractController{
 	
@@ -55,13 +53,11 @@ public class EditMemberController extends AbstractController{
 			String zipCode = zip.getText();
 
 			try {
-				FileManager<LibraryMember> memManager = new FileManagerImpl<>("libraryMember");
-			
-				Address addr = new Address(streetname, cityin, stateOfCountry, zipCode);
-				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, addr);
+				/*Address add = new Address(street.toString(), city.toString(), state.toString(), zip.toString());
+				LibraryMember mem = new LibraryMember(memberID, firstName,phoneno, add);*/
+				//mem.addMember(mem); 
+				// call edit member method from dao
 				
-				memManager.edit(mem);
-				memManager.findAll();
 				
 				clearField(memId,fname,lname,phone,street,city,state,zip);
 				

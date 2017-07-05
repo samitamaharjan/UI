@@ -4,9 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class SearchEditMemberController extends AbstractController{
@@ -31,7 +31,7 @@ public class SearchEditMemberController extends AbstractController{
 		            Parent root1 = (Parent) fxmlLoader1.load();
 		            Stage stage1 = new Stage();
 		            stage1.setTitle("Edit Library Member");
-		            stage1.setScene(new Scene(root1,700,500)); 
+		            stage1.setScene(new Scene(root1,700,600)); 
 		            stage1.show();
 		          } 
 			catch (Exception e) 
