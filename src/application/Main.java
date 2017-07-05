@@ -14,12 +14,13 @@ public class Main extends Application {
 		try {
 			Parent root0 = FXMLLoader.load(getClass().getResource("/application/AddMember.fxml"));
 			Parent root1 = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
-			Parent root2 = FXMLLoader.load(getClass().getResource("/application/CheckoutBook.fxml"));
+			Parent root2 = FXMLLoader.load(getClass().getResource("/application/CheckoutBookAvail.fxml"));
 			Parent root3 = FXMLLoader.load(getClass().getResource("/application/Admin_Librarian.fxml"));
-			Parent root4 = FXMLLoader.load(getClass().getResource("/application/SuccessfullMsg.fxml"));
 			Parent root5 = FXMLLoader.load(getClass().getResource("/application/SearchEditMember.fxml"));
-			
-			Scene scene = new Scene(root2, 600, 400);
+			Parent root6 = FXMLLoader.load(getClass().getResource("/application/CheckoutBookAvail.fxml"));
+			//Parent root7 = FXMLLoader.load(getClass().getResource("/application/Checkout.fxml"));
+						
+			Scene scene = new Scene(root3, 600, 400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

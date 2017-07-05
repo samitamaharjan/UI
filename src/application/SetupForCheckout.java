@@ -17,13 +17,20 @@ public class SetupForCheckout {
 		FileManager<Book> bookManager = new FileManagerImpl<>("book");
 		 
 		bookManager.clean();
-		
-		Address add1 = new Address();
-		Author author = new Author("Appollo", "Jason", "2589654", add1, "cred", "bio");
+		Address addr1 = new Address("1000 N 4th St", "Fairfield", "52555", "IA");
+		Author author = new Author("Appollo", "Jason", "2589654", addr1, "cred", "bio");
 		BookCopy bookCopy = new BookCopy("1000");
 		Book java = new Book("1111", "Java", author, bookCopy, BookType.REFERENCE.toString());
+		java.addBookCopy(new BookCopy("1000"));
+		java.addBookCopy(new BookCopy("1001"));
+		
+		BookCopy bookCopy1 = new BookCopy("1000");
+		Book python = new Book("2222", "Python", author, bookCopy1, BookType.REGULAR.toString());
+		python.addBookCopy(new BookCopy("2000"));
+		python.addBookCopy(new BookCopy("2001"));
 		
 		bookManager.insert(java);
+		bookManager.insert(python);
 		bookManager.print();
 		
 		FileManager<LibraryMember> memberManager = new FileManagerImpl<>("libraryMember");
@@ -35,6 +42,7 @@ public class SetupForCheckout {
 		memberManager.insert(john);
 		memberManager.insert(samita);
 		memberManager.print();
+		bookManager.print();
 		
 	}
 }

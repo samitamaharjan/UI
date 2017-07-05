@@ -15,6 +15,11 @@ public class Book implements Serializable, PrimaryKey {
 	private List<Author> authorlist;
 	private BookType type;
 	private List<BookCopy> listbookcopy;
+	private int count;
+	
+	public int getCount() {
+		return getAvailablityCount();
+	}
 	
 	public Book(String ISBN, String title, Author a, BookCopy b, String bookType) {
 		authorlist = new ArrayList<Author>();
@@ -32,7 +37,7 @@ public class Book implements Serializable, PrimaryKey {
 	}
 	
 	public int getAvailablityCount() {
-		int count = 0;
+		count = 0;
 		
 		for (BookCopy bc : listbookcopy) {
 			if (bc.isAvailable() == true) {
@@ -53,6 +58,10 @@ public class Book implements Serializable, PrimaryKey {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public List<BookCopy> getListbookcopy() {
+		return listbookcopy;
 	}
 
 	public List<Author> getAuthorlist() {

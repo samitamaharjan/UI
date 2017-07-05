@@ -3,17 +3,20 @@ package application;
 import business.Book;
 import business.BookCopy;
 import business.CheckoutRecord;
-import business.CheckoutRecordEntry;
 import business.LibraryMember;
 import dao.FileManager;
 import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class CheckoutBookContoller extends AbstractController{
+public class CheckoutBookAvailContoller extends AbstractController{
 	@FXML
 	private TextField checkoutMemIdText;
 	@FXML
@@ -21,6 +24,10 @@ public class CheckoutBookContoller extends AbstractController{
 	@FXML
 	private Button btnSubmit;
 	
+	public String getCheckoutMemIdText() {
+		return checkoutMemIdText.getText();
+	}
+
 	FileManager<LibraryMember> memberManager = new FileManagerImpl<>("libraryMember");
 	FileManager<Book> bookManager = new FileManagerImpl<>("book");
 	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
@@ -52,14 +59,17 @@ public class CheckoutBookContoller extends AbstractController{
 				if (bc == null) {
 					showAlert(AlertType.CONFIRMATION,"Book copies are not available at this time.");
 				}
-				CheckoutRecordEntry entry = new CheckoutRecordEntry(bc);
-				CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(memberID);
-				checkoutRecord.addEntry(entry);
-				bc.setAvailable(false);
 				
-				clearField(checkoutMemIdText,checkoutMemIsbnText);
-				
-				showAlert(AlertType.CONFIRMATION,"Book checkout successfully");
+				 try{
+			           	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/issue.fxml"));
+			            Parent root = (Parent) fxmlLoader.load();
+			            Stage stage = new Stage();
+			            stage.setTitle("Book Details");
+			            stage.setScene(new Scene(root,600,500)); 
+			            stage.show();
+			          } catch(Exception e) {
+			        	  e.printStackTrace();
+			          }
 			} 
 			catch (Exception e) 
 			{

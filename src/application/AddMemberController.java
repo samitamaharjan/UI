@@ -62,11 +62,7 @@ public class AddMemberController extends AbstractController{
 				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, add);
 				FileManager<LibraryMember> filemanager = new FileManagerImpl<LibraryMember>("member");
 				filemanager.insert(mem);
-				// call add member method from dao
-				
 				filemanager.findAll();
-				
-				
 				clearField(memId,fname,lname,phone,street,city,state,zip);
 				
 				showAlert(AlertType.CONFIRMATION,"Member added successfully");

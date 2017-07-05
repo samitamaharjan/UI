@@ -92,7 +92,7 @@ public class AddBookController extends AbstractController{
 			try {
 				Address addr = new Address(authorSt, authorC, authorZipp, authorStr);
 				Author author = new Author(authorFirstName, authorLastName, authorPh, addr, authorCre, authorBio);
-				BookCopy bookcopy = new BookCopy(bookcoid, numofcopy);
+				BookCopy bookcopy = new BookCopy(bookcoid);
 				Book book = new Book(bookIsbn, bookTitle, author, bookcopy, booktype);
 				
 				FileManager<Book> filemanager = new FileManagerImpl<Book>("book");
