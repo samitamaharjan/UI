@@ -17,8 +17,6 @@ public class Book implements Serializable, PrimaryKey {
 	private String type;
 	private List<BookCopy> listbookcopy;
 	
-	
-
 	public Book(String ISBN, String title, Author a, BookCopy b, String type) {
 		authorlist = new ArrayList<Author>();
 		listbookcopy = new ArrayList<BookCopy>();

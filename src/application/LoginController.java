@@ -50,7 +50,7 @@ public class LoginController extends AbstractController{
 				Login login = (Login)ois.readObject();
 				
 					if(name.equals(login.getUsername())&& password.equals(login.getPassword())){
-						//System.out.println("succes");
+						//System.out.println("success");
 						 try{
 					            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/Admin_Librarian.fxml"));
 					            Parent root = (Parent) fxmlLoader.load();

@@ -46,4 +46,9 @@ public class Person implements Serializable, PrimaryKey {
 	public String getPrimaryKey() {
 		return memberId;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("%-10s %-10s %-10s %-10s", memberId, firstName, lastName, phone);
+	}
 }

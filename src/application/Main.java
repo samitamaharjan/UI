@@ -19,7 +19,7 @@ public class Main extends Application {
 			Parent root4 = FXMLLoader.load(getClass().getResource("/application/SuccessfullMsg.fxml"));
 			Parent root5 = FXMLLoader.load(getClass().getResource("/application/SearchEditMember.fxml"));
 			
-			Scene scene = new Scene(root2,600,400);
+			Scene scene = new Scene(root1,600,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
