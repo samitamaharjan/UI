@@ -45,7 +45,6 @@ public class CheckoutBookContoller extends AbstractController{
 				return;
 			}
 			try {
-				LibraryMember member = memberManager.findByPrimaryKey(memberID);
 				Book book = bookManager.findByPrimaryKey(isbnNo);
 				
 				BookCopy bc = book.getAvailableBookCopy();
@@ -54,6 +53,8 @@ public class CheckoutBookContoller extends AbstractController{
 				}
 				CheckoutRecordEntry entry = new CheckoutRecordEntry(bc);
 				CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(memberID);
+				checkoutRecord.addEntry(entry);
+				bc.setAvailable(false);
 				
 				clearField(checkoutMemIdText,checkoutMemIsbnText);
 				

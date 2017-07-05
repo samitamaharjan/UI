@@ -13,16 +13,20 @@ public class Book implements Serializable, PrimaryKey {
 	private String ISBN;
 	private String title;
 	private List<Author> authorlist;
-	private String type;
+	private BookType type;
 	private List<BookCopy> listbookcopy;
 	
-	public Book(String ISBN, String title, Author a, BookCopy b, String type) {
+	public Book(String ISBN, String title, Author a, BookCopy b, String bookType) {
 		authorlist = new ArrayList<Author>();
 		listbookcopy = new ArrayList<BookCopy>();
 		this.ISBN = ISBN;
 		this.title = title;
 		authorlist = new ArrayList<>();
-		this.type = type;
+		if (BookType.REFERENCE.toString().equalsIgnoreCase(bookType)) {
+			this.type = BookType.REFERENCE;
+		} else { 
+			this.type = BookType.REGULAR;
+		}
 		addAuthor(a);
 		addBookCopy(b);
 	}
@@ -55,7 +59,7 @@ public class Book implements Serializable, PrimaryKey {
 		return authorlist;
 	}
 
-	public String getType() {
+	public BookType getType() {
 		return type;
 	}
 
@@ -82,6 +86,7 @@ public class Book implements Serializable, PrimaryKey {
 	
 	public void addBookCopy(BookCopy b){
 		listbookcopy.add(b);
+		b.setBook(this);
 	}
 
 	@Override

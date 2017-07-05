@@ -10,10 +10,27 @@ public class BookCopy implements Serializable, PrimaryKey {
 	
 	private String copybookid;
 	private boolean available;
+	private Book book;
 		
 	public BookCopy(String copybookid){
 		this.copybookid = copybookid;
 		this.available = true;
+	}
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public void setCopybookid(String copybookid) {
+		this.copybookid = copybookid;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 	public static long getSerialversionuid() {

@@ -18,7 +18,8 @@ public class CheckoutRecordEntry implements Serializable, PrimaryKey {
 	public CheckoutRecordEntry(BookCopy bookcopy) {
 		this.id = UUID.randomUUID().toString();
 		this.checkoutDate = LocalDate.now();
-		this.dueDate = LocalDate.now(); // TODO: calculate this based on book type later
+		int days = bookcopy.getBook().getType().getNoOfDays();
+		this.dueDate = LocalDate.now().plusDays(days);
 		this.bookcopy = bookcopy;
 	}
 

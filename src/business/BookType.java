@@ -8,9 +8,8 @@ public enum BookType {
 	private BookType(int noOfDays) {
 		this.noOfDays = noOfDays;
 	}
-	
-	@Override
-	public String toString() {
-		return String.valueOf(noOfDays);
+
+	public int getNoOfDays() {
+		return noOfDays;
 	}
 }
