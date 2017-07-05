@@ -22,6 +22,26 @@ public class Person implements Serializable, PrimaryKey {
 		this.address = address;
 	}
 	
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

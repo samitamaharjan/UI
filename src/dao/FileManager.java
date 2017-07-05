@@ -8,4 +8,5 @@ public interface FileManager<T> {
 	public void clean();
 	public void delete(String id);
 	public void edit(T t);
+	public void print();
 }
