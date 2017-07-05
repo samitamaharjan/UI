@@ -9,19 +9,27 @@ public class BookCopy implements Serializable, PrimaryKey {
 	private static final long serialVersionUID = 5654380069068491357L;
 	
 	private String copybookid;
-	private int noOfCopy;
+	private boolean available;
 		
-	public BookCopy(String copybookid, int noOfCopy){
+	public BookCopy(String copybookid){
 		this.copybookid = copybookid;
-		this.noOfCopy = noOfCopy;
+		this.available = true;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getCopybookid() {
+		return copybookid;
+	}
+
+	public boolean isAvailable() {
+		return available;
 	}
 
 	public String getCopyBookId() {
 		return copybookid;
-	}
-
-	public int getNoOfCopy() {
-		return noOfCopy;
 	}
 	
 	@Override
@@ -31,6 +39,6 @@ public class BookCopy implements Serializable, PrimaryKey {
 	
 	@Override
 	public String toString() {
-		return "BookCopy [copybookid=" + copybookid + ", noOfCopy=" + noOfCopy + "]";
+		return "BookCopy [copybookid=" + copybookid + "]";
 	}
 }

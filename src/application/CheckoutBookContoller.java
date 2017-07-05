@@ -1,11 +1,10 @@
 package application;
 
-import business.Address;
-import business.LibraryMember;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class CheckoutBookContoller extends AbstractController{
 	@FXML

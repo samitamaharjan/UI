@@ -12,7 +12,6 @@ public class Book implements Serializable, PrimaryKey {
 
 	private String ISBN;
 	private String title;
-	private boolean available;
 	private List<Author> authorlist;
 	private String type;
 	private List<BookCopy> listbookcopy;
@@ -22,11 +21,21 @@ public class Book implements Serializable, PrimaryKey {
 		listbookcopy = new ArrayList<BookCopy>();
 		this.ISBN = ISBN;
 		this.title = title;
-		this.available = true;
 		authorlist = new ArrayList<>();
 		this.type = type;
 		addAuthor(a);
 		addBookCopy(b);
+	}
+	
+	public int getAvailablityCount() {
+		int count = 0;
+		
+		for (BookCopy bc : listbookcopy) {
+			if (bc.isAvailable() == true) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	public static long getSerialversionuid() {
@@ -49,10 +58,6 @@ public class Book implements Serializable, PrimaryKey {
 		return title;
 	}
 
-	public boolean isAvailable() {
-		return available;
-	}
-
 	public List<Author> getAuthor() {
 		return authorlist;
 	}
@@ -72,7 +77,7 @@ public class Book implements Serializable, PrimaryKey {
 
 	@Override
 	public String toString() {
-		return "Book [ISBN=" + ISBN + ", title=" + title + ", available=" + available + ", authorlist=" + authorlist
+		return "Book [ISBN=" + ISBN + ", title=" + title + ", authorlist=" + authorlist
 				+ ", type=" + type + ", listbookcopy=" + listbookcopy + "]";
 	}
 }

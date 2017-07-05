@@ -20,7 +20,7 @@ public class SetupForCheckout {
 		
 		Address add1 = new Address();
 		Author author = new Author("Appollo", "Jason", "2589654", add1, "cred", "bio");
-		BookCopy bookCopy = new BookCopy("1000", 6);
+		BookCopy bookCopy = new BookCopy("1000");
 		Book java = new Book("1111", "Java", author, bookCopy, BookType.REFERENCE.toString());
 		
 		bookManager.insert(java);
