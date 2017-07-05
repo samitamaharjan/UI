@@ -33,9 +33,18 @@ public class Book implements Serializable, PrimaryKey {
 		for (BookCopy bc : listbookcopy) {
 			if (bc.isAvailable() == true) {
 				count++;
-			}
+ 			}
 		}
 		return count;
+	}
+	
+	public BookCopy getAvailableBookCopy() {
+		for (BookCopy bc : listbookcopy) {
+			if (bc.isAvailable() == true) {
+				return bc;
+			}
+		}
+		return null;
 	}
 
 	public static long getSerialversionuid() {

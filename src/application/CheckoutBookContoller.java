@@ -1,5 +1,12 @@
 package application;
 
+import business.Book;
+import business.BookCopy;
+import business.CheckoutRecord;
+import business.CheckoutRecordEntry;
+import business.LibraryMember;
+import dao.FileManager;
+import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
@@ -14,7 +21,11 @@ public class CheckoutBookContoller extends AbstractController{
 	@FXML
 	private Button btnSubmit;
 	
-public void checkAvailibilityClicked(ActionEvent event){
+	FileManager<LibraryMember> memberManager = new FileManagerImpl<>("libraryMember");
+	FileManager<Book> bookManager = new FileManagerImpl<>("book");
+	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
+	
+	public void checkAvailibilityClicked(ActionEvent event){
 		
 		if (checkoutMemIdText.getText().isEmpty() || checkoutMemIsbnText.getText().isEmpty()) 
 		{
@@ -23,12 +34,26 @@ public void checkAvailibilityClicked(ActionEvent event){
 		else{
 			String memberID = checkoutMemIdText.getText().toString();
 			String isbnNo = checkoutMemIsbnText.getText().toString();
-
+			
+			if (!memberManager.exists(memberID)) {
+				showAlert(AlertType.ERROR,"Invalid member id");
+				return;
+			}
+			
+			if (!bookManager.exists(isbnNo)) {
+				showAlert(AlertType.ERROR,"Invalid ISBN");
+				return;
+			}
 			try {
-				//Address add = new Address(memberID, isbnNo);
-				//mem.addMember(mem); 
-				// call update checkout record method from dao
+				LibraryMember member = memberManager.findByPrimaryKey(memberID);
+				Book book = bookManager.findByPrimaryKey(isbnNo);
 				
+				BookCopy bc = book.getAvailableBookCopy();
+				if (bc == null) {
+					showAlert(AlertType.CONFIRMATION,"Book copies are not available at this time.");
+				}
+				CheckoutRecordEntry entry = new CheckoutRecordEntry(bc);
+				CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(memberID);
 				
 				clearField(checkoutMemIdText,checkoutMemIsbnText);
 				
