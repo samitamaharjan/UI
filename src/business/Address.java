@@ -14,14 +14,17 @@ public class Address implements Serializable, PrimaryKey {
 	private String city;
 	private String zip;
 	private String state;
-
+	
+	public Address() {
+		
+	}
+	
 	public Address(String street, String city, String zip, String state) {
 		this.id = UUID.randomUUID().toString();
 		this.street = street;
 		this.city = city;
 		this.zip = zip;
 		this.state = state;
-
 	}
 
 	public String getStreet() {
@@ -47,5 +50,10 @@ public class Address implements Serializable, PrimaryKey {
 	@Override
 	public String getPrimaryKey() {
 		return id;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%-15s %-15s %-8s %-10s", street, city, zip, state);
 	}
 }

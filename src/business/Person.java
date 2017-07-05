@@ -69,6 +69,9 @@ public class Person implements Serializable, PrimaryKey {
 	
 	@Override
 	public String toString() {
-		return String.format("%-10s %-10s %-10s %-10s", memberId, firstName, lastName, phone);
+		if (address == null) {
+			address = new Address();
+		}
+		return String.format("%-10s %-10s %-10s %-10s %s", memberId, firstName, lastName, phone, address.toString());
 	}
 }

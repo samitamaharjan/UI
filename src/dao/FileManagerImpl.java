@@ -99,4 +99,10 @@ public class FileManagerImpl<T extends PrimaryKey> implements FileManager<T> {
 			System.out.println(t);
 		}
 	}
+
+	@Override
+	public boolean exists(String id) {
+		if (findByPrimaryKey(id) != null) return true;
+		return false;
+	}
 }

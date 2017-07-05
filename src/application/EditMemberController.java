@@ -2,6 +2,8 @@ package application;
 
 import business.Address;
 import business.LibraryMember;
+import dao.FileManager;
+import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,6 +38,7 @@ public class EditMemberController extends AbstractController{
 	
 	@FXML
 	private Button btnEditMember;
+	private FileManager<LibraryMember> fileManager = new FileManagerImpl<>("libraryMember");
 	
 	public void editMemberClicked(ActionEvent event){
 		if (memId.getText().isEmpty() || fname.getText().isEmpty() || lname.getText().isEmpty() || street.getText().isEmpty() || city.getText().isEmpty()|| state.getText().isEmpty() || zip.getText().isEmpty() || phone.getText().isEmpty()) 
@@ -43,8 +46,8 @@ public class EditMemberController extends AbstractController{
 			showAlert(AlertType.WARNING, "Please enter all the details");
 		}
 		else{
-			String memberID = memId.getText().toString();
-			String firstName = fname.getText().toString();
+			String memberID = memId.getText();
+			String firstName = fname.getText();
 			String lastName = lname.getText();
 			String phoneno = phone.getText();
 			String streetname = street.getText();
@@ -53,14 +56,11 @@ public class EditMemberController extends AbstractController{
 			String zipCode = zip.getText();
 
 			try {
-				/*Address add = new Address(street.toString(), city.toString(), state.toString(), zip.toString());
-				LibraryMember mem = new LibraryMember(memberID, firstName,phoneno, add);*/
-				//mem.addMember(mem); 
-				// call edit member method from dao
-				
+				Address add = new Address(streetname, cityin, stateOfCountry, zipCode);
+				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, add);
+				fileManager.edit(mem);	
 				
 				clearField(memId,fname,lname,phone,street,city,state,zip);
-				
 				showAlert(AlertType.CONFIRMATION,"Member details changed");
 			} 
 			catch (Exception e) 
