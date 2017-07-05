@@ -69,4 +69,10 @@ public class Book implements Serializable, PrimaryKey {
 	public void addBookCopy(BookCopy b){
 		listbookcopy.add(b);
 	}
+
+	@Override
+	public String toString() {
+		return "Book [ISBN=" + ISBN + ", title=" + title + ", available=" + available + ", authorlist=" + authorlist
+				+ ", type=" + type + ", listbookcopy=" + listbookcopy + "]";
+	}
 }

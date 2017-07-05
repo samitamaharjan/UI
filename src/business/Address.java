@@ -54,6 +54,7 @@ public class Address implements Serializable, PrimaryKey {
 	
 	@Override
 	public String toString() {
-		return String.format("%-15s %-15s %-8s %-10s", street, city, zip, state);
+		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", zip=" + zip + ", state=" + state
+				+ "]";
 	}
 }
