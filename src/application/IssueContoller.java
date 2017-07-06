@@ -91,7 +91,7 @@ public class IssueContoller extends AbstractController implements Initializable 
 			Parent root = (Parent) fxmlLoader.load();
 			
 			SuccessfullyIssued controller = fxmlLoader.getController();
-			controller.setBookInformation(book, memberId);
+			controller.setBookInformation(book, memberId, entry);
 			Stage stage = new Stage();
             stage.setTitle("Confirmation");
 			stage.setScene(new Scene(root, 700, 500));

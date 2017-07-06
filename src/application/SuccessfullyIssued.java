@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import business.Book;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,10 +40,12 @@ public class SuccessfullyIssued extends AbstractController {
 	
 	private Book book;
 	
-	public void setBookInformation(Book book, String memberId) {
+	public void setBookInformation(Book book, String memberId, CheckoutRecordEntry entry) {
 		bookTitle.setText(book.getTitle());
 		bookIsbn.setText(book.getISBN());
 		memId.setText(memberId);
+		dateOfIssue.setText(entry.getCheckoutDate().toString());
+		overdueDate.setText(entry.getDueDate().toString());
 	}
 	
 	public void addBookClicked(){
