@@ -17,10 +17,10 @@ public class Main extends Application {
 			Parent root2 = FXMLLoader.load(getClass().getResource("/application/CheckoutBookAvail.fxml"));
 			Parent root3 = FXMLLoader.load(getClass().getResource("/application/Admin_Librarian.fxml"));
 			Parent root5 = FXMLLoader.load(getClass().getResource("/application/SearchEditMember.fxml"));
-			Parent root6 = FXMLLoader.load(getClass().getResource("/application/CheckoutBookAvail.fxml"));
+			Parent root6 = FXMLLoader.load(getClass().getResource("/application/issue.fxml"));
 			//Parent root7 = FXMLLoader.load(getClass().getResource("/application/Checkout.fxml"));
 						
-			Scene scene = new Scene(root3, 600, 400);
+			Scene scene = new Scene(root1, 600, 400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

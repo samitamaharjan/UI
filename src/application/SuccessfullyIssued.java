@@ -1,7 +1,6 @@
 package application;
 
-
-
+import business.Book;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,12 +28,14 @@ public class SuccessfullyIssued extends AbstractController{
 	private Button btnOkConfirmation;
 	@FXML
 	AnchorPane closeCurrentWindow;
-
+	
+	private Book book;
 	
 	public void addBookClicked(){
-
+			
 			try {
 				Stage current = (Stage) closeCurrentWindow.getScene().getWindow();
+				
 				current.hide();
 			} 
 			catch (Exception e) 

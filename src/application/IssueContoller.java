@@ -1,18 +1,12 @@
 package application;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import business.Address;
-import business.Author;
 import business.Book;
-import business.BookCopy;
-import business.BookType;
 import business.CheckoutRecord;
-import business.CheckoutRecordEntry;
 import dao.FileManager;
 import dao.FileManagerImpl;
 import javafx.collections.FXCollections;
@@ -41,12 +35,25 @@ public class IssueContoller extends AbstractController implements Initializable 
 	private TableColumn<Book, String> type;
 	@FXML
 	private TableColumn<Book, String> noOfCopy;
-
 	@FXML
 	private Button btnIssueBook;
-
 	@FXML
 	private ObservableList<Book> bookList;
+	
+	private String isbnNo;
+	
+//	public IssueContoller() {
+//		
+//	}
+//	
+//	public IssueContoller(String isbnNo) {
+//		this.isbnNo = isbnNo;
+//	}
+	
+	public void setIsbnNo(String isbnNo) {
+		this.isbnNo = isbnNo;
+	}
+
 	private FileManager<Book> bookManager = new FileManagerImpl<>("book");
 	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
 
@@ -57,36 +64,26 @@ public class IssueContoller extends AbstractController implements Initializable 
 		bookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		type.setCellValueFactory(new PropertyValueFactory<Book, String>("type"));
 		noOfCopy.setCellValueFactory(new PropertyValueFactory<Book, String>("count"));
-
-		List<Book> books = bookManager.findAll();
+		
+		List<Book> books = new ArrayList<>();
+		books.addAll(bookManager.findAll());
 		bookList = FXCollections.observableArrayList(books);
 		
-		List<Book> showBooks = new ArrayList<Book>();
-		
-		for (Book b : books) {
-			if (ISBN.getText().equals(b.getISBN().toString())) {
-				showBooks.add(b);
-			}
-		}
-		
 		bookTable.getItems().setAll(bookList);
-		
 	}
 
 	public void issueClicked() {
-		CheckoutBookAvailContoller check = new CheckoutBookAvailContoller();
-		String memberID = check.getCheckoutMemIdText();
-
+		
 		try {
-			Book book = bookManager.findByPrimaryKey(ISBN.getText());
+			/*Book book = bookManager.findByPrimaryKey(ISBN.getText());
 			BookCopy bc = book.getAvailableBookCopy();
 			bc.setAvailable(false);
 
 			CheckoutRecordEntry entry = new CheckoutRecordEntry(bc);
-			CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(memberID);
+			CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(ISBN.getText());
 			checkoutRecord.addEntry(entry);
-
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/SuccessfullMsg.fxml"));
+			 */
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/SuccessfullyIssued.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
             stage.setTitle("Confirmation");

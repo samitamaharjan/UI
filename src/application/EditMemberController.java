@@ -6,8 +6,13 @@ import dao.FileManager;
 import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 
 public class EditMemberController extends AbstractController{
@@ -35,6 +40,10 @@ public class EditMemberController extends AbstractController{
 	
 	@FXML
 	TextField phone;
+	@FXML
+	private Button btnBack;
+	@FXML
+	AnchorPane closeCurrentWindow;
 	
 	@FXML
 	private Button btnEditMember;
@@ -70,5 +79,20 @@ public class EditMemberController extends AbstractController{
 			
 		}
 	}
+	public void btnBackClicked(){
+		 try{
+				 	Stage current = (Stage) closeCurrentWindow.getScene().getWindow();
+		            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/SearchEditMember.fxml"));
+		            Parent root = (Parent) fxmlLoader.load();
+		            Stage stage = new Stage();
+		            
+		            stage.setTitle("Add Library Member");
+		            stage.setScene(new Scene(root,600,500)); 
+		            stage.show();
+		            current.hide();
+		          } catch(Exception e) {
+		        	  e.printStackTrace();
+		          }
+		}
 
 }

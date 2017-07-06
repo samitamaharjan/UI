@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -16,6 +17,10 @@ public class SearchEditMemberController extends AbstractController{
 
 	@FXML
 	TextField searchMember;
+	@FXML
+	private Button btnBack;
+	@FXML
+	AnchorPane closeCurrentWindow;
 	
 	private Button searchMemberBtn;
 	private FileManager<LibraryMember> fileManager = new FileManagerImpl<>("libraryMember");
@@ -38,7 +43,7 @@ public class SearchEditMemberController extends AbstractController{
 	            Parent root1 = (Parent) fxmlLoader1.load();
 	            Stage stage1 = new Stage();
 	            stage1.setTitle("Edit Library Member");
-	            stage1.setScene(new Scene(root1,700,600)); 
+	            stage1.setScene(new Scene(root1,600,500)); 
 	            stage1.show();
 		    } 
 			catch (Exception e) 
@@ -48,5 +53,20 @@ public class SearchEditMemberController extends AbstractController{
 			
 		}
 
-}
+	}
+	public void btnBackClicked(){
+		 try{
+				 	Stage current = (Stage) closeCurrentWindow.getScene().getWindow();
+		            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/Admin_Librarian.fxml"));
+		            Parent root = (Parent) fxmlLoader.load();
+		            Stage stage = new Stage();
+		            
+		            stage.setTitle("Add Library Member");
+		            stage.setScene(new Scene(root,600,500)); 
+		            stage.show();
+		            current.hide();
+		          } catch(Exception e) {
+		        	  e.printStackTrace();
+		          }
+		}
 }

@@ -17,8 +17,8 @@ public class SetupForLogin {
 		Address addr3 = new Address("2500 N 4th St", "Redmond", "52555", "PA");
 		LibraryMember maria = new LibraryMember("10", "Maria", "Jackson", "256981", addr1);
 		LibraryMember john = new LibraryMember("20", "John", "Smith", "2589642", addr2);
-		LibraryMember samita = new LibraryMember("20", "Samita", "Maharjan", "2058651", addr3);
-		LibraryMember madhuri = new LibraryMember("20", "Madhuri", "Agrawal", "2058651", addr3);
+		LibraryMember samita = new LibraryMember("30", "Samita", "Maharjan", "2058651", addr3);
+		LibraryMember madhuri = new LibraryMember("40", "Madhuri", "Agrawal", "2058651", addr3);
 		
 		loginManager.insert(john);
 		loginManager.insert(samita);

@@ -12,11 +12,16 @@ import dao.FileManagerImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 
 public class AddBookController extends AbstractController{
@@ -29,10 +34,6 @@ public class AddBookController extends AbstractController{
 	
 	@FXML
 	TextField bookcopyid;
-	
-	@FXML
-	TextField numberofcopies;
-	
 	@FXML
 	TextField authorFName;
 	@FXML
@@ -54,7 +55,10 @@ public class AddBookController extends AbstractController{
 	
 	@FXML
 	private Button btnAddBook;
-	
+	@FXML
+	private Button btnBack;
+	@FXML
+	AnchorPane closeCurrentWindow;
 	@FXML
 	private ChoiceBox booktypeBox;
 	
@@ -63,8 +67,7 @@ public class AddBookController extends AbstractController{
 	private void initialize(){
 		booktypeBox.setValue("Regular");
 		booktypeBox.setItems(booktypeList);
-		
-		
+
 	}
 	
 	public void addBookClicked(){
@@ -75,8 +78,7 @@ public class AddBookController extends AbstractController{
 		else{
 			String bookTitle = title.getText().toString();
 			String bookIsbn = isbn.getText().toString();
-			String bookcoid = bookcopyid.getText();
-			String numofcopy = numberofcopies.getText();
+			String bookcoid = bookcopyid.getText();			
 			String authorFirstName = authorFName.getText().toString();
 			String authorLastName = authorLName.getText().toString();
 			String authorSt = authorStreet.getText().toString();
@@ -108,5 +110,21 @@ public class AddBookController extends AbstractController{
 			
 		}
 
-}
+	}
+	public void btnBackClicked(){
+		try{
+		 	Stage current = (Stage) closeCurrentWindow.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/Admin_Librarian.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            
+            stage.setTitle("Admin and Librarian");
+            stage.setScene(new Scene(root,600,500)); 
+            stage.show();
+            current.hide();
+          } catch(Exception e) {
+        	  e.printStackTrace();
+          }
+		}
+
 }

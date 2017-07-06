@@ -6,9 +6,14 @@ import dao.FileManager;
 import dao.FileManagerImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class AddMemberController extends AbstractController{
 	
@@ -38,7 +43,10 @@ public class AddMemberController extends AbstractController{
 	
 	@FXML
 	private Button btnAddMember;
-	
+	@FXML
+	private Button btnBack;
+	@FXML
+	AnchorPane closeCurrentWindow;
 	
 	
 	public void addMemberClicked(ActionEvent event){
@@ -60,9 +68,13 @@ public class AddMemberController extends AbstractController{
 			try {
 				Address add = new Address(streetname, cityin, stateOfCountry, zipCode);
 				LibraryMember mem = new LibraryMember(memberID, firstName, lastName, phoneno, add);
-				FileManager<LibraryMember> filemanager = new FileManagerImpl<LibraryMember>("member");
+				FileManager<LibraryMember> filemanager = new FileManagerImpl<LibraryMember>("libraryMember");
 				filemanager.insert(mem);
+				// call add member method from dao
+				
 				filemanager.findAll();
+				
+				
 				clearField(memId,fname,lname,phone,street,city,state,zip);
 				
 				showAlert(AlertType.CONFIRMATION,"Member added successfully");
@@ -74,5 +86,20 @@ public class AddMemberController extends AbstractController{
 			
 		}
 	}
+	public void btnBackClicked(){
+		 try{
+				 	Stage current = (Stage) closeCurrentWindow.getScene().getWindow();
+		            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/Admin_Librarian.fxml"));
+		            Parent root = (Parent) fxmlLoader.load();
+		            Stage stage = new Stage();
+		            
+		            stage.setTitle("Add Library Member");
+		            stage.setScene(new Scene(root,600,500)); 
+		            stage.show();
+		            current.hide();
+		          } catch(Exception e) {
+		        	  e.printStackTrace();
+		          }
+		}
 
 }
