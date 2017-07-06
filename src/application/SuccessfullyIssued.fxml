@@ -23,8 +23,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="memId" layoutX="337.0" layoutY="154.0" prefHeight="25.0" prefWidth="197.0" />
-      <TextField fx:id="bookTitle" layoutX="338.0" layoutY="197.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label fx:id="memId" layoutX="337.0" layoutY="154.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label fx:id="bookTitle" layoutX="338.0" layoutY="197.0" prefHeight="25.0" prefWidth="197.0" />
       <Button fx:id="btnOkConfirmation" layoutX="337.0" layoutY="389.0" mnemonicParsing="false" onAction="#addBookClicked" prefHeight="25.0" prefWidth="197.0" text="Ok">
          <font>
             <Font size="14.0" />
@@ -34,7 +34,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="overdueDate" layoutX="338.0" layoutY="334.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label fx:id="overdueDate" layoutX="338.0" layoutY="334.0" prefHeight="25.0" prefWidth="197.0" />
       <Label layoutX="133.0" layoutY="247.0" text="Book ISBN">
          <font>
             <Font size="14.0" />
@@ -45,7 +45,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="bookIsbn" layoutX="338.0" layoutY="244.0" prefHeight="25.0" prefWidth="197.0" />
-      <TextField fx:id="dateOfIssue" layoutX="337.0" layoutY="288.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label fx:id="bookIsbn" layoutX="338.0" layoutY="244.0" prefHeight="25.0" prefWidth="197.0" />
+      <Label fx:id="dateOfIssue" layoutX="337.0" layoutY="288.0" prefHeight="25.0" prefWidth="197.0" />
    </children>
 </AnchorPane>

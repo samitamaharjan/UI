@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,15 +23,15 @@ public class SuccessfullyIssued extends AbstractController {
 	ObservableList<String> booktypeList = FXCollections.observableArrayList("Regular","Special");
 	
 	@FXML
-	TextField memId;
+	Label memId;
 	@FXML
-	TextField bookTitle;
+	Label bookTitle;
 	@FXML
-	TextField bookIsbn;
+	Label bookIsbn;
 	@FXML
-	TextField dateOfIssue;
+	Label dateOfIssue;
 	@FXML
-	TextField overdueDate;
+	Label overdueDate;
 	@FXML
 	private Button btnOkConfirmation;
 	@FXML

@@ -56,9 +56,8 @@ public class IssueContoller extends AbstractController implements Initializable 
 	}
 	
 	public void setBookToUI(String isbnNo, String memberId) {
-		Book book = bookManager.findByPrimaryKey(isbnNo);
 		this.isbnNo = isbnNo;
-		this.book = book;
+		this.book = bookManager.findByPrimaryKey(isbnNo);
 		this.memberId = memberId;
 		
 		List<Book> books = new ArrayList<>();
