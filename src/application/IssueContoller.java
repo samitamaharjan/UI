@@ -42,6 +42,7 @@ public class IssueContoller extends AbstractController implements Initializable 
 	
 	private String isbnNo;
 	
+	private Book book;
 //	public IssueContoller() {
 //		
 //	}
@@ -62,8 +63,12 @@ public class IssueContoller extends AbstractController implements Initializable 
 	}
 	
 	public void setBookToUI(String isbnNo) {
+		Book book = bookManager.findByPrimaryKey(isbnNo);
+		this.isbnNo = isbnNo;
+		this.book = book;
+		
 		List<Book> books = new ArrayList<>();
-		books.add(bookManager.findByPrimaryKey(isbnNo));
+		books.add(book);
 		bookList = FXCollections.observableArrayList(books);		
 		bookTable.getItems().setAll(bookList);
 	}
@@ -81,6 +86,9 @@ public class IssueContoller extends AbstractController implements Initializable 
 			 */
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/SuccessfullyIssued.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
+			
+			SuccessfullyIssued controller = fxmlLoader.getController();
+			controller.setBookInformation(book);
 			Stage stage = new Stage();
             stage.setTitle("Confirmation");
 			stage.setScene(new Scene(root, 700, 500));
