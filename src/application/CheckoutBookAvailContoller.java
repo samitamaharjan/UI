@@ -59,7 +59,7 @@ public class CheckoutBookAvailContoller extends AbstractController {
 									
 					Parent root = (Parent) fxmlLoader.load();
 					IssueContoller issueController = fxmlLoader.getController();
-					issueController.setIsbnNo(isbnNo);
+					issueController.setBookToUI(isbnNo);
 					Stage stage = new Stage();
 					stage.setTitle("Book Details");
 					stage.setScene(new Scene(root, 600, 500));

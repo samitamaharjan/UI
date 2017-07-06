@@ -50,25 +50,21 @@ public class IssueContoller extends AbstractController implements Initializable 
 //		this.isbnNo = isbnNo;
 //	}
 	
-	public void setIsbnNo(String isbnNo) {
-		this.isbnNo = isbnNo;
-	}
-
 	private FileManager<Book> bookManager = new FileManagerImpl<>("book");
 	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
 		ISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("ISBN"));
 		bookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		type.setCellValueFactory(new PropertyValueFactory<Book, String>("type"));
 		noOfCopy.setCellValueFactory(new PropertyValueFactory<Book, String>("count"));
-		
+	}
+	
+	public void setBookToUI(String isbnNo) {
 		List<Book> books = new ArrayList<>();
-		books.addAll(bookManager.findAll());
-		bookList = FXCollections.observableArrayList(books);
-		
+		books.add(bookManager.findByPrimaryKey(isbnNo));
+		bookList = FXCollections.observableArrayList(books);		
 		bookTable.getItems().setAll(bookList);
 	}
 
