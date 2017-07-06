@@ -41,15 +41,8 @@ public class IssueContoller extends AbstractController implements Initializable 
 	private ObservableList<Book> bookList;
 	
 	private String isbnNo;
-	
+	private String memberId;	
 	private Book book;
-//	public IssueContoller() {
-//		
-//	}
-//	
-//	public IssueContoller(String isbnNo) {
-//		this.isbnNo = isbnNo;
-//	}
 	
 	private FileManager<Book> bookManager = new FileManagerImpl<>("book");
 	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
@@ -62,10 +55,11 @@ public class IssueContoller extends AbstractController implements Initializable 
 		noOfCopy.setCellValueFactory(new PropertyValueFactory<Book, String>("count"));
 	}
 	
-	public void setBookToUI(String isbnNo) {
+	public void setBookToUI(String isbnNo, String memberId) {
 		Book book = bookManager.findByPrimaryKey(isbnNo);
 		this.isbnNo = isbnNo;
 		this.book = book;
+		this.memberId = memberId;
 		
 		List<Book> books = new ArrayList<>();
 		books.add(book);
@@ -88,7 +82,7 @@ public class IssueContoller extends AbstractController implements Initializable 
 			Parent root = (Parent) fxmlLoader.load();
 			
 			SuccessfullyIssued controller = fxmlLoader.getController();
-			controller.setBookInformation(book);
+			controller.setBookInformation(book, memberId);
 			Stage stage = new Stage();
             stage.setTitle("Confirmation");
 			stage.setScene(new Scene(root, 700, 500));

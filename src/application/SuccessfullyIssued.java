@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import business.Book;
+import business.LibraryMember;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,9 +38,10 @@ public class SuccessfullyIssued extends AbstractController {
 	
 	private Book book;
 	
-	public void setBookInformation(Book book) {
+	public void setBookInformation(Book book, String memberId) {
 		bookTitle.setText(book.getTitle());
 		bookIsbn.setText(book.getISBN());
+		memId.setText(memberId);
 	}
 	
 	public void addBookClicked(){
