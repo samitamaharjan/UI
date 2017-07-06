@@ -12,6 +12,7 @@ import business.CheckoutRecordEntry;
 import business.LibraryMember;
 import dao.FileManager;
 import dao.FileManagerImpl;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +57,8 @@ public class IssueContoller extends AbstractController implements Initializable 
 		ISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("ISBN"));
 		bookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		type.setCellValueFactory(new PropertyValueFactory<Book, String>("type"));
-		noOfCopy.setCellValueFactory(new PropertyValueFactory<Book, String>("count"));
+		//noOfCopy.setCellValueFactory(new PropertyValueFactory<Book, String>("count"));
+		noOfCopy.setCellValueFactory(p -> new SimpleStringProperty("" + p.getValue().getAvailablityCount()));
 	}
 	
 	public void setBookToUI(String isbnNo, String memberId) {
