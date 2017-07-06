@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import business.Book;
+import business.BookCopy;
 import business.CheckoutRecord;
+import business.CheckoutRecordEntry;
+import business.LibraryMember;
 import dao.FileManager;
 import dao.FileManagerImpl;
 import javafx.collections.FXCollections;
@@ -45,6 +48,7 @@ public class IssueContoller extends AbstractController implements Initializable 
 	private Book book;
 	
 	private FileManager<Book> bookManager = new FileManagerImpl<>("book");
+	private FileManager<LibraryMember> memberManager = new FileManagerImpl<>("libraryMember");
 	FileManager<CheckoutRecord> checkoutRecordManager = new FileManagerImpl<>("checkoutRecord");
 
 	@Override
@@ -69,14 +73,20 @@ public class IssueContoller extends AbstractController implements Initializable 
 	public void issueClicked() {
 		
 		try {
-			/*Book book = bookManager.findByPrimaryKey(ISBN.getText());
+			Book book = bookManager.findByPrimaryKey(isbnNo);
 			BookCopy bc = book.getAvailableBookCopy();
 			bc.setAvailable(false);
 
 			CheckoutRecordEntry entry = new CheckoutRecordEntry(bc);
-			CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(ISBN.getText());
-			checkoutRecord.addEntry(entry);
-			 */
+			CheckoutRecord checkoutRecord = checkoutRecordManager.findByPrimaryKey(memberId);
+			if (checkoutRecord == null) {
+				LibraryMember member = memberManager.findByPrimaryKey(memberId);
+				checkoutRecord = new CheckoutRecord(member, entry);
+			} else {
+				checkoutRecord.addEntry(entry);
+			}
+			checkoutRecordManager.insert(checkoutRecord);
+			
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/SuccessfullyIssued.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			

@@ -13,8 +13,10 @@ public class CheckoutRecord implements Serializable, PrimaryKey {
 	private List<CheckoutRecordEntry> entry;
 	private LibraryMember member;
 
-	public CheckoutRecord(CheckoutRecordEntry e) {
+	public CheckoutRecord(LibraryMember member, CheckoutRecordEntry e) {
+		this.member = member;
 		this.entry = new ArrayList<CheckoutRecordEntry>();
+		entry.add(e);
 	}
 
 	public LibraryMember getMember() {
